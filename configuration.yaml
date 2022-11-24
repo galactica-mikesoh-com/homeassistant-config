@@ -18,4 +18,3 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 sensor: !include_dir_merge_list sensors-command
 
-intentionally_broken: !include missing.yaml
