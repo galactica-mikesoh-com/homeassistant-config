@@ -1,0 +1,14 @@
+- platform: command_line
+  name: LE Certificate Expiry
+  scan_interval: 10800
+  unique_id: '600087b8-e48a-4169-aefa-5f7e347cc306'
+  command: 'cat /ssl/cert-valid.txt | sed ''s/.*\s//'''
+
+# Instructions from: https://smarthomepursuits.com/display-ssl-expiry-reminders-in-home-assistant/
+# Not currently working
+# - template:
+#   - sensor:
+#     - name: 'LE Certificate Expiry Template'
+#       unit_of_measurement: days
+#       state: '{{ states(sensor.le_certificate_expiry) }}'
+        
