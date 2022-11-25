@@ -6,7 +6,7 @@
   json_attributes:
     - not_before
     - not_after
-    - issuer.organization
+    - issuer[organization]
   unit_of_measurement: "days"
   value_template: "{{ value_json.ttl }}"
 
