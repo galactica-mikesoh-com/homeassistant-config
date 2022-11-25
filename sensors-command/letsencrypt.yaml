@@ -3,12 +3,10 @@
   scan_interval: 10800
   unique_id: '600087b8-e48a-4169-aefa-5f7e347cc306'
   command: 'cat /ssl/cert-info.json'
+  json_attributes:
+    - not_before
+    - not_after
+    - issuer.organization
+  unit_of_measurement: "days"
+  value_template: "{{ value_json.ttl }}"
 
-# Instructions from: https://smarthomepursuits.com/display-ssl-expiry-reminders-in-home-assistant/
-# Not currently working
-# - template:
-#   - sensor:
-#     - name: 'LE Certificate Expiry Template'
-#       unit_of_measurement: days
-#       state: '{{ states(sensor.le_certificate_expiry) }}'
-        
