@@ -7,8 +7,6 @@
     - not_before
     - not_after
     - poll_datetime
-    - issuer.organization
-    - issuer[organization]
   unit_of_measurement: "days"
   value_template: "{{ value_json.ttl }}"
 
