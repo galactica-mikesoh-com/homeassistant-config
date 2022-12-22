@@ -13,7 +13,7 @@ http:
 tts:
   - platform: google_translate
 
-automation: !include automations.yaml
+automation: !include_dir_merge_list automations
 script: !include scripts.yaml
 scene: !include scenes.yaml
 sensor: !include_dir_merge_list sensors-command

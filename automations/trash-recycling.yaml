@@ -1,0 +1,46 @@
+- id: '1671740402182'
+  alias: Tag Recycling Can is scanned
+  description: Sets boolean to True
+  trigger:
+  - platform: tag
+    tag_id: fdd4274c-e8f5-46eb-9f37-c8a967f68ba5
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.recycling_can
+  mode: single
+
+- id: '1671741672000'
+  alias: Tag Trash Can is scanned
+  description: Sets boolean to True
+  trigger:
+  - platform: tag
+    tag_id: ef571650-a610-4931-8dbb-95b3b21da1c5
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.trash_can
+  mode: single
+
+
+- id: '1671741335261'
+  alias: Return Trash and Recycling to Off
+  description: ''
+  trigger:
+  - platform: time
+    at: 01:00:00
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.recycling_can
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.trash_can
+  mode: single
