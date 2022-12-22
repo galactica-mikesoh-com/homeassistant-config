@@ -32,7 +32,7 @@
   description: ''
   trigger:
   - platform: time
-    at: 01:00:00
+    at: '01:00:00'
   condition: []
   action:
   - service: input_boolean.turn_off
@@ -43,4 +43,66 @@
     data: {}
     target:
       entity_id: input_boolean.trash_can
+  mode: single
+
+- id: '1671749036516'
+  alias: Trash notification
+  description: ''
+  trigger:
+  - platform: time
+    at: '18:00:00'
+  - platform: time
+    at: '18:00:00'
+  - platform: time
+    at: '19:00:00'
+  - platform: time
+    at: '20:00:00'
+  condition:
+  - condition: and
+    conditions:
+    - condition: or
+      conditions:
+      - condition: and
+        conditions:    
+        - condition: numeric_state
+          entity_id: sensor.garbage_refuse_collection
+          below: 1.1
+        - condition: state
+          entity_id: input_boolean.trash_can
+          state: 'off'
+      - condition: and
+        conditions:    
+        - condition: numeric_state
+          entity_id: sensor.recycling_collection
+          below: 1.1
+        - condition: state
+          entity_id: input_boolean.recycling_can
+          state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: person.mike
+        state: home
+      - condition: state
+        entity_id: person.tania
+        state: home
+    
+  action:
+  - choose:
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.recycling_collection
+        attribute: days
+        below: 1.1
+      sequence:
+      - service: notify.notify
+        data:
+          message: Trash and Recycling need to go out
+          title: Trash & Recycling
+    - conditions: []
+      sequence:
+      - service: notify.notify
+        data:
+          message: Trash needs to go out.
+          title: Trash
   mode: single
