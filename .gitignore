@@ -1,6 +1,18 @@
-.storage
-.cloud
-.google.token
+# .cloud/: Stores ha cloud information
+.cloud/
+# .storage/: stores local information like user details, passwords, etc.
+.storage/
+
+# These files are not committed for security reasons
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+.google.token
+home-assistant_*.db*
+
+# custom_components/: Seems to be HACS files, but will ignore these for now.  There are a LOT of files there
+custom_components/
+
+# These files are ephemerial and don't need to be version controlled
+*.log*
+.HA_VERSION
