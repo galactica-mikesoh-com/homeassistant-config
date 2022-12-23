@@ -78,6 +78,7 @@
         conditions:    
         - condition: numeric_state
           entity_id: sensor.garbage_refuse_collection
+          attribute: days
           below: 1.1
         - condition: state
           entity_id: input_boolean.trash_can
@@ -86,6 +87,7 @@
         conditions:    
         - condition: numeric_state
           entity_id: sensor.recycling_collection
+          attribute: days
           below: 1.1
         - condition: state
           entity_id: input_boolean.recycling_can
