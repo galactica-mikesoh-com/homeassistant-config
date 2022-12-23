@@ -32,8 +32,13 @@
   description: ''
   trigger:
   - platform: time
-    at: '01:00:00'
-  condition: []
+    at: '20:00:00'
+  condition: 
+    - condition: time
+      after: '00:00'
+      before: '23:00'
+      weekday:
+        - fri
   action:
   - service: input_boolean.turn_off
     data: {}
@@ -49,17 +54,24 @@
   alias: Trash notification
   description: ''
   trigger:
-  - platform: time
-    at: '18:00:00'
-  - platform: time
-    at: '18:00:00'
-  - platform: time
-    at: '19:00:00'
-  - platform: time
-    at: '20:00:00'
+  - platform: time_pattern
+    hours: '*'
+
   condition:
   - condition: and
     conditions:
+    - condition: or
+      conditions:
+      - condition: time
+        after: '18:00'
+        before: '21:00'
+        weekday:
+          - thu
+      - condition: time
+        after: '06:00'
+        before: '10:00'
+        weekday:
+          - fri
     - condition: or
       conditions:
       - condition: and
