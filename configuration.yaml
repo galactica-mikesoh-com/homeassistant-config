@@ -14,7 +14,6 @@ tts:
   - platform: google_translate
 
 automation: !include_dir_merge_list automations
-script: !include scripts.yaml
+script: !include_dir_merge_list scripts
 scene: !include scenes.yaml
 sensor: !include_dir_merge_list sensors
-

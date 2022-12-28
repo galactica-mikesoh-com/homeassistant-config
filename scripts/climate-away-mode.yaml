@@ -1,0 +1,10 @@
+thermostat_away_mode:
+  alias: Thermostat Away Mode
+  sequence:
+    - service: climate.set_temperature
+      data:
+        target_temp_high: 85
+        target_temp_low: 60
+        hvac_mode: heat_cool
+  mode: single
+  icon: mdi:home-thermometer
