@@ -10,3 +10,14 @@
       unit_of_measurement: seconds
       state: >
         {{ (as_timestamp(now()) - int(state_attr('sensor.le_certificate_expiry', 'poll_unixtime'))) | round(0) }}
+
+  binary_sensor:
+    - name: LE Polling is Late
+      unique_id: '0dd1d86b-752c-440d-8277-280864171a7e'
+      # 1 = late, 0 = normal
+      state: >
+        {% if int(states('sensor.le_elapsed_poll_time_in_seconds')) > 86400 %}
+          1
+        {% else %}
+          0
+        {% endif %}

@@ -1,0 +1,19 @@
+- id: '1672683112268'
+  alias: Let's Encrypt Polling
+  description: some description
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.le_polling_is_late
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_c1_pixel_6_pro
+    data:
+      message: "The Let's Encrypt certificate could not be polled for more than one day.  Check on it's cronjob to ensure that it is running correctly."
+      title: "Issue with Let's Encrypt certificate polling"
+  mode: single
