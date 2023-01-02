@@ -9,6 +9,7 @@ secrets.yaml
 known_devices.yaml
 .google.token
 home-assistant_*.db*
+zigbee.db*
 
 # custom_components/: Seems to be HACS files, but will ignore these for now.  There are a LOT of files there
 custom_components/
