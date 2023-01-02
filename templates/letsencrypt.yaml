@@ -1,0 +1,12 @@
+- unique_id: d5a13802e3564cba9cd8e11492eb1edb
+  trigger:
+    - platform: time_pattern
+      hours: "*"
+      minutes: "/10"
+  sensor:
+    - name: LE Elapsed Poll Time in Seconds
+      unique_id: 'ec46d5ed-d433-46e6-a6d6-3676e824b76b'
+      # measures the number of seconds since the SSL cert was polled.
+      unit_of_measurement: seconds
+      state: >
+        {{ (as_timestamp(now()) - int(state_attr('sensor.le_certificate_expiry', 'poll_unixtime'))) | round(0) }}

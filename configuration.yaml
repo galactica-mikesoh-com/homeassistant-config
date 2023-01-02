@@ -17,3 +17,4 @@ automation: !include_dir_merge_list automations
 script: !include_dir_merge_list scripts
 scene: !include scenes.yaml
 sensor: !include_dir_merge_list sensors
+template: !include_dir_merge_list templates
