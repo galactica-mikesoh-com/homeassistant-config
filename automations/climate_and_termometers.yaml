@@ -17,18 +17,3 @@
         title: Crawlspace is at risk of freezing
         message: The crawlspace has been below 40° F for at least one hour.  Consider turning on the heat.
   mode: single
-
-- id: '0f2bd0b2890c4ecd9596283db331e2e1'
-  alias: HVAC Filter Replacement Tag
-  description: Sets the date for HVAC Filter
-  trigger:
-  - platform: tag
-    tag_id: 0f2bd0b2-890c-4ecd-9596-283db331e2e1
-  condition: []
-  action:
-  - service: input_datetime.set_datetime
-    target:
-      entity_id: input_datetime.hvac_air_filter
-    data: 
-      date: "{{ now().strftime('%Y-%m-%d') }}"
-  mode: single
