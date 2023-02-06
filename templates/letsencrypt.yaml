@@ -11,12 +11,19 @@
       state: >
         {{ (as_timestamp(now()) - int(state_attr('sensor.le_certificate_expiry', 'poll_unixtime'))) | round(0) }}
 
+    - name: LE Elapsed Poll Time in hours
+      unique_id: '651694bb-6c67-4457-9460-b6a2e35f6604'
+      # measures the number of seconds since the SSL cert was polled.
+      unit_of_measurement: hours
+      state: >
+        {{ ((as_timestamp(now()) - int(state_attr('sensor.le_certificate_expiry', 'poll_unixtime'))) / 3600) | round(2) }}
+
   binary_sensor:
     - name: LE Polling is Late
       unique_id: '0dd1d86b-752c-440d-8277-280864171a7e'
       # 1 = late, 0 = normal
       state: >
-        {% if int(states('sensor.le_elapsed_poll_time_in_seconds')) > 86400 %}
+        {% if int(states('sensor.le_elapsed_poll_time_in_hours')) > 24 %}
           1
         {% else %}
           0
