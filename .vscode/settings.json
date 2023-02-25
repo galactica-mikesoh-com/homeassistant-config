@@ -3,6 +3,7 @@
         "automations",
         "fullchain",
         "hacs",
+        "homeassistant",
         "privkey"
     ],
     "yaml.customTags": [

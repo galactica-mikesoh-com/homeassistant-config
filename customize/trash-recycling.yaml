@@ -1,0 +1,6 @@
+- input_boolean.recycling_can:
+    barcode: "9R2CV0014255"
+
+- input_boolean.trash_can:
+    can number: "1117448961"
+    
