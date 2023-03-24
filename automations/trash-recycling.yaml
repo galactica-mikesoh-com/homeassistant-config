@@ -102,21 +102,20 @@
         state: home
     
   action:
-  - choose:
+    - service: notify.notify
+      data:
+        message: Trash needs to go out.
+        title: Trash
+
     - conditions:
       - condition: numeric_state
         entity_id: sensor.recycling_collection
         attribute: days
         below: 1.1
-      sequence:
-      - service: notify.notify
-        data:
-          message: Trash and Recycling need to go out
-          title: Trash & Recycling
-    - conditions: []
-      sequence:
-      - service: notify.notify
-        data:
-          message: Trash needs to go out.
-          title: Trash
+        
+    # Will only run if condition is true
+    - service: notify.notify
+      data:
+        message: Recycling need to go out
+        title: Recycling      
   mode: single
