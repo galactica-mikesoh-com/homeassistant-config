@@ -17,3 +17,4 @@ custom_components/
 # These files are ephemerial and don't need to be version controlled
 *.log*
 .HA_VERSION
+.Trash-*
