@@ -24,3 +24,12 @@ template: !include_dir_merge_list templates
 
 homeassistant: 
   customize: !include_dir_merge_named customize
+
+# Enables OTA Zigbee firmware updates for DEVICES
+# https://community.home-assistant.io/t/ikea-tradfri-5-button-remote-doesnt-trigger-automation/558062/7?u=honeypotleopard
+zha:
+  zigpy_config:
+    ota:
+      ikea_provider: true                        # Auto update Trådfri devices 
+      ledvance_provider: true                    # Auto update LEDVANCE/OSRAM devices
+      salus_provider: true                       # Auto update SALUS/Computime devices
