@@ -18,3 +18,4 @@ custom_components/
 *.log*
 .HA_VERSION
 .Trash-*
+automations/test-nfc-tag.yaml

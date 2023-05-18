@@ -1,5 +1,10 @@
-- input_boolean.recycling_can:
+- input_boolean.recycling_can_pond_slider:
     barcode: "9R2CV0014255"
+
+- input_boolean.recycling_can_western_pond:
+    can number: "RPC 2740805"
+    manufacture date: "April 16, 2023"
+    delivery date: "May 16, 2023"
 
 - input_boolean.trash_can:
     can number: "1117448961"
