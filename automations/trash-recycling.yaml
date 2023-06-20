@@ -1,5 +1,5 @@
 - id: '1671740402182'
-  alias: Tag Recycling Can is scanned
+  alias: Tag Recycling Can "Pond Slider" is scanned
   description: Sets boolean to True
   trigger:
   - platform: tag
@@ -11,6 +11,21 @@
     target:
       entity_id: input_boolean.recycling_can_pond_slider
   mode: single
+
+- id: '99961b2c-9545-43f3-ae29-7dc30b23cddf'
+  alias: Tag Recycling Can "Western Pond" is scanned
+  description: Sets boolean to True
+  trigger:
+  - platform: tag
+    tag_id: 90726f9d-3eaf-4b61-978f-0f03210999c3
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.recycling_can_western_pond
+  mode: single
+
 
 - id: '1671741672000'
   alias: Tag Trash Can is scanned
