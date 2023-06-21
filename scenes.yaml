@@ -1,1 +1,105 @@
-[]
+- id: '1687305572199'
+  name: All Lights Off
+  entities:
+    light.tradfri_bulb_a_light:
+      state: 'off'
+    light.tradfri_bulb_b_light:
+      state: 'off'
+    light.signify_netherlands_b_v_lwa029_huelight:
+      state: 'off'
+  icon: mdi:lightbulb-outline
+  metadata: {}
+- id: '1687305761462'
+  name: Midnight Oil
+  entities:
+    light.tradfri_bulb_a_light:
+      brightness: 75
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      state: 'on'
+    light.tradfri_bulb_b_light:
+      brightness: 75
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      state: 'on'
+    light.signify_netherlands_b_v_lwa029_huelight:
+      state: 'off'
+  icon: mdi:lightbulb-night-outline
+  metadata: {}
+- id: '1687306484697'
+  name: Normal Lights
+  entities:
+    light.tradfri_bulb_a_light:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4000
+      min_mireds: 250
+      max_mireds: 454
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Tradfri Bulb B Light
+      supported_features: 44
+      color_mode: color_temp
+      brightness: 148
+      hs_color:
+      - 28.185
+      - 62.588
+      rgb_color:
+      - 255
+      - 170
+      - 95
+      xy_color:
+      - 0.516
+      - 0.386
+      color_temp_kelvin: 2801
+      color_temp: 357
+      state: 'on'
+    light.tradfri_bulb_b_light:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4000
+      min_mireds: 250
+      max_mireds: 454
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Tradfri Bulb B Light
+      supported_features: 44
+      color_mode: color_temp
+      brightness: 148
+      hs_color:
+      - 28.185
+      - 62.588
+      rgb_color:
+      - 255
+      - 170
+      - 95
+      xy_color:
+      - 0.516
+      - 0.386
+      color_temp_kelvin: 2801
+      color_temp: 357
+      state: 'on'
+    light.signify_netherlands_b_v_lwa029_huelight:
+      supported_color_modes:
+      - brightness
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Ikea Lamp Main Lightbulb Huelight
+      supported_features: 40
+      color_mode: brightness
+      brightness: 75
+      state: 'on'
+  icon: mdi:lightbulb
+  metadata: {}
