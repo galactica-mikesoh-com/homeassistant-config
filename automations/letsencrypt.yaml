@@ -1,6 +1,6 @@
 - id: '1672683112268'
   alias: Let's Encrypt Polling
-  description: some description
+  description: Notify Mike that LE Polling is late.
   trigger:
   - platform: state
     entity_id:
@@ -12,7 +12,7 @@
       seconds: 0
   condition: []
   action:
-  - service: notify.mobile_app_c1_pixel_6_pro
+  - service: notify.mobile_app_mike_c1_phone_7f4b
     data:
       message: "The Let's Encrypt certificate could not be polled for more than one day.  Check on it's cronjob to ensure that it is running correctly."
       title: "Issue with Let's Encrypt certificate polling"
