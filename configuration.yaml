@@ -34,3 +34,12 @@ zha:
       ikea_provider: true # Auto update Trådfri devices
       ledvance_provider: true # Auto update LEDVANCE/OSRAM devices
       salus_provider: true # Auto update SALUS/Computime devices
+
+recorder:
+  commit_interval: 60
+  exclude:
+    entity_globs:
+      - sensor.sun*
+    entities:
+      - sensor.last_boot
+      - sun.sun
