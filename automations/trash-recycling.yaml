@@ -9,7 +9,7 @@
   - service: input_boolean.turn_on
     data: {}
     target:
-      entity_id: input_boolean.recycling_can_pond_slider
+      entity_id: input_boolean.recycling_can_churro
   mode: single
 
 - id: '99961b2c-9545-43f3-ae29-7dc30b23cddf'
@@ -23,7 +23,7 @@
   - service: input_boolean.turn_on
     data: {}
     target:
-      entity_id: input_boolean.recycling_can_western_pond
+      entity_id: input_boolean.recycling_can_brownie
   mode: single
 
 
@@ -58,7 +58,7 @@
   - service: input_boolean.turn_off
     data: {}
     target:
-      entity_id: input_boolean.recycling_can_pond_slider
+      entity_id: input_boolean.recycling_can_churro
   - service: input_boolean.turn_off
     data: {}
     target:
@@ -105,7 +105,7 @@
           attribute: days
           below: 1.1
         - condition: state
-          entity_id: input_boolean.recycling_can_pond_slider
+          entity_id: input_boolean.recycling_can_brownie
           state: 'off'
     - condition: or
       conditions:

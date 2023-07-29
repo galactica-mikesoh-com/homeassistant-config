@@ -23,7 +23,7 @@ sensor: !include_dir_merge_list sensors
 command_line: !include_dir_merge_list command_line
 template: !include_dir_merge_list templates
 
-homeassistant: 
+homeassistant:
   customize: !include_dir_merge_named customize
 
 # Enables OTA Zigbee firmware updates for DEVICES
@@ -31,6 +31,6 @@ homeassistant:
 zha:
   zigpy_config:
     ota:
-      ikea_provider: true                        # Auto update Trådfri devices 
-      ledvance_provider: true                    # Auto update LEDVANCE/OSRAM devices
-      salus_provider: true                       # Auto update SALUS/Computime devices
+      ikea_provider: true # Auto update Trådfri devices
+      ledvance_provider: true # Auto update LEDVANCE/OSRAM devices
+      salus_provider: true # Auto update SALUS/Computime devices

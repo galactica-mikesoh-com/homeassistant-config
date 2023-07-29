@@ -1,7 +1,7 @@
-- input_boolean.recycling_can_pond_slider:
+- input_boolean.recycling_can_churro:
     barcode: "9R2CV0014255"
 
-- input_boolean.recycling_can_western_pond:
+- input_boolean.recycling_can_brownie:
     can number: "RPC 2740805"
     manufacture date: "April 16, 2023"
     delivery date: "May 16, 2023"
