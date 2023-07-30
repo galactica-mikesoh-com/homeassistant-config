@@ -24,3 +24,17 @@
       unit_of_measurement: "days"
       state: >
         {{ ((as_timestamp(now()) - as_timestamp(states('input_datetime.refrigerator_water_filter'))) / 86400) | round(0) }}
+
+
+# Provides HVAC action as a string so we can capture statistics
+- unique_id: "7dc4569f2c4a43838d1b81c4d00f6df4"
+  trigger:
+    - platform: time_pattern
+      hours: "*"
+      minutes: "*"
+      seconds: "17"
+  sensor:
+    - name: HVAC Current Action
+      unique_id: "7dc4569f-2c4a-4383-8d1b-81c4d00f6df4"
+      state: >
+        {{ state_attr("climate.thermostat", "hvac_action") }}
