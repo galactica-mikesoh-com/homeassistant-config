@@ -38,3 +38,20 @@
       unique_id: "7dc4569f-2c4a-4383-8d1b-81c4d00f6df4"
       state: >
         {{ state_attr("climate.thermostat", "hvac_action") }}
+
+- unique_id: "fc0b4ed0b02b435399264a66c6560373"
+  trigger:
+    - platform: time_pattern
+      hours: "*"
+      minutes: "*"
+      seconds: "17"
+  sensor:
+    - name: HVAC Current Action - Binary
+      unique_id: "fc0b4ed0-b02b-4353-9926-4a66c6560373"
+      state_class: measurement
+      state: >
+        {% if state_attr("climate.thermostat", "hvac_action") in ["cooling", "heating"] -%}
+          1
+        {%- else -%}
+          0
+        {%- endif %}
