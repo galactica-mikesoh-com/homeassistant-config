@@ -2,11 +2,12 @@
     name: LE Certificate Expiry
     scan_interval: 10800
     unique_id: '600087b8-e48a-4169-aefa-5f7e347cc306'
-    command: '/ssl/le-cert-check-ha.sh'
+    command: 'bash /ssl/le-cert-check-ha.sh'
     json_attributes:
       - not_before
       - not_after
       - poll_datetime
       - poll_unixtime
     unit_of_measurement: "days"
-    value_template: "{{ value_json.ttl }}"
+    value_template: >
+      {{ ((as_timestamp(value_json.not_after) - as_timestamp(now())) / 86400) | round(0) }}
