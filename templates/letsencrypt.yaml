@@ -18,6 +18,12 @@
       state: >
         {{ ((as_timestamp(now()) - int(state_attr('sensor.le_certificate_expiry', 'poll_unixtime'))) / 3600) | round(2) }}
 
+    - name: LE Certificate Expiry in Days
+      unique_id: "ed7eda38d82b4dbeb3fc2ed6a04f2505"
+      unit_of_measurement: days
+      state: >
+        {{ ((as_timestamp(states('sensor.cert_expiry_timestamp_homeassistant_galactica_mikesoh_com_8123')) - as_timestamp(now())) / 86400) | round(0) }}
+
   binary_sensor:
     - name: LE Polling is Late
       unique_id: '0dd1d86b-752c-440d-8277-280864171a7e'
