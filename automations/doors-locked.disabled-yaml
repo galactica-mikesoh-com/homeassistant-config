@@ -1,0 +1,101 @@
+- id: '3d5ca8aa-c85f-4b33-b299-2f317873d65c'
+  alias: Show locks as unchecked
+  description: ''
+  trigger:
+  - platform: time
+    at: '06:00:00'
+  action:
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.front_door_check
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.office_door_check
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.screen_door_check
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.laundry_room_door_check
+  mode: single
+
+- id: 'c9604a70-da55-4b7b-aafe-5a5553849b45'
+  alias: Door Lock Notification
+  description: ''
+  trigger:
+  - platform: time_pattern
+    hours: '*'
+
+  condition:
+  - condition: and
+    conditions:
+    - condition: or
+      conditions:
+      - condition: time
+        after: '20:00'
+        before: '22:00'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.front_door_check
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.office_door_check
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.screen_door_check
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.laundry_room_door_check
+          state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: person.mike
+        state: home
+      - condition: state
+        entity_id: person.tania
+        state: home
+    
+  action:
+    - if:
+        - condition: state
+          entity_id: input_boolean.front_door_check
+          state: "off"
+      then:
+        - service: notify.notify
+          data: 
+            message: Front Door
+            title: Is the Front Door locked?
+    - if:
+        - condition: state
+          entity_id: input_boolean.office_door_check
+          state: "off"
+      then:
+        - service: notify.notify
+          data: 
+            message: Office Door
+            title: Is the Office Door locked?
+    - if:
+        - condition: state
+          entity_id: input_boolean.screen_door_check
+          state: "off"
+      then:
+        - service: notify.notify
+          data: 
+            message: Screen Door
+            title: Is the Screen Door Locked?
+    - if:
+        - condition: state
+          entity_id: input_boolean.laundry_room_door_check
+          state: "off"
+      then:
+        - service: notify.notify
+          data: 
+            message: Laundry Room Door
+            title: Is the Laundry Room Door Locked?
+  mode: single

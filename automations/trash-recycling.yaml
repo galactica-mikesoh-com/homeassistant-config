@@ -1,5 +1,5 @@
 - id: '1671740402182'
-  alias: Tag Recycling Can "Pond Slider" is scanned
+  alias: Tag Recycling Can "Churro" is scanned
   description: Sets boolean to True
   trigger:
   - platform: tag
@@ -13,7 +13,7 @@
   mode: single
 
 - id: '99961b2c-9545-43f3-ae29-7dc30b23cddf'
-  alias: Tag Recycling Can "Western Pond" is scanned
+  alias: Tag Recycling Can "Churro" is scanned
   description: Sets boolean to True
   trigger:
   - platform: tag
@@ -122,11 +122,10 @@
         message: Trash needs to go out.
         title: Trash
 
-    - conditions:
-      - condition: numeric_state
-        entity_id: sensor.recycling_collection
-        attribute: days
-        below: 1.1
+    - condition: numeric_state
+      entity_id: sensor.recycling_collection
+      attribute: days
+      below: 1.1
         
     # Will only run if condition is true
     - service: notify.notify

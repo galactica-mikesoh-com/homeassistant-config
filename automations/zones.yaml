@@ -1,0 +1,21 @@
+- id: '1688935879376'
+  alias: Arrival
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - device_tracker.tania_s_a50
+    to: home
+  condition:
+  - condition: state
+    entity_id: device_tracker.pixel_6_pro
+    state: home
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+  action:
+  - service: notify.mobile_app_mike_c1_phone_7f4b
+    data:
+      message: Tania is home.
+  mode: single
