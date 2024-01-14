@@ -13,7 +13,7 @@
   mode: single
 
 - id: '99961b2c-9545-43f3-ae29-7dc30b23cddf'
-  alias: Tag Recycling Can "Churro" is scanned
+  alias: Tag Recycling Can "Brownie" is scanned
   description: Sets boolean to True
   trigger:
   - platform: tag
