@@ -16,7 +16,7 @@
         data:
           media_stream: alarm_stream
           command: 20
-    - service: notify.mobile_app_tania_s_a50
+    - service: notify.mobile_app_tania_a50
       data:
         data:
           ttl: 0
