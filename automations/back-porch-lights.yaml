@@ -1,9 +1,9 @@
 - id: 64f377e6-d7c1-4929-b05c-c767cee716c4
-  alias: Toggle Office Lights
+  alias: Toggle Back Porch Lights
   description: ""
   mode: single
   trigger:
-    - device_id: ad652b6bc2b9ae70e151c39822fb53c7
+    - device_id: 40dd5dc4e4440fc1ab3fa7ff4f3dabce
       domain: zha
       platform: device
       type: remote_button_short_press
@@ -13,5 +13,4 @@
     - service: light.toggle
       data: {}
       target:
-        area_id: mike_s_office
-
+        entity_id: light.back_porch_switch_light

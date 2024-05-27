@@ -1,0 +1,51 @@
+- id: a2cf06e7-3e75-4144-92d1-e1e5483045d7
+  alias: Find Tania's Phone
+  description: ""
+  mode: single
+  trigger:
+    - device_id: ad652b6bc2b9ae70e151c39822fb53c7
+      domain: zha
+      platform: device
+      type: remote_button_short_press
+      subtype: remote_button_short_press
+  condition: []
+  action:
+    - service: notify.mobile_app_tania_s_a50
+      data:
+        message: command_volume_level
+        data:
+          media_stream: alarm_stream
+          command: 20
+    - service: notify.mobile_app_tania_s_a50
+      data:
+        data:
+          ttl: 0
+          priority: high
+          channel: alarm_stream
+        message: Home Assistant is finding your phone
+
+- id: f1127b36-af59-42d2-8296-b7be3d8eeb11
+  alias: Find Mike's Phone
+  description: ""
+  mode: single
+  trigger:
+    - device_id: ad652b6bc2b9ae70e151c39822fb53c7
+      domain: zha
+      platform: device
+      type: remote_button_double_press
+      subtype: remote_button_double_press
+  condition: []
+  action:
+    - service: notify.mobile_app_c1_pixel_7f4b
+      data:
+        message: command_volume_level
+        data:
+          media_stream: alarm_stream
+          command: 20
+    - service: notify.mobile_app_c1_pixel_7f4b
+      data:
+        data:
+          ttl: 0
+          priority: high
+          channel: alarm_stream
+        message: Home Assistant is finding your phone
