@@ -10,7 +10,7 @@
       subtype: remote_button_short_press
   condition: []
   action:
-    - service: notify.mobile_app_tania_s_a50
+    - service: notify.mobile_app_tania_a50
       data:
         message: command_volume_level
         data:
