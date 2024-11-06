@@ -2,10 +2,13 @@
 # filter in days so that we can do some automations
 
 - unique_id: d60eedfb250e4d76ace885a1f10dabdc
-  # trigger:
-  #   - trigger: time_pattern
-  #     hours: "1"
-  #     minutes: "32"
+  trigger:
+    - trigger: time_pattern
+      hours: "1"
+      minutes: "32"
+    - trigger: state
+      entity_id:
+        - "input_datetime.hvac_air_filter"
   sensor:
     - name: HVAC Air Filter Age in Days
       unique_id: "d60eedfb-250e-4d76-ace8-85a1f10dabdc"
@@ -18,6 +21,9 @@
     - trigger: time_pattern
       hours: "1"
       minutes: "32"
+    - trigger: state
+      entity_id:
+        - "input_datetime.refrigerator_water_filter"
   sensor:
     - name: Refrigerator Water Filter Age in Days
       unique_id: "3848a244-41de-4c14-bba6-84048e22dd32"
