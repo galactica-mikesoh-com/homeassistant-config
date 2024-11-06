@@ -2,10 +2,10 @@
 # filter in days so that we can do some automations
 
 - unique_id: d60eedfb250e4d76ace885a1f10dabdc
-  trigger:
-    - trigger: time_pattern
-      hours: "1"
-      minutes: "32"
+  # trigger:
+  #   - trigger: time_pattern
+  #     hours: "1"
+  #     minutes: "32"
   sensor:
     - name: HVAC Air Filter Age in Days
       unique_id: "d60eedfb-250e-4d76-ace8-85a1f10dabdc"
@@ -27,11 +27,11 @@
 
 # Provides HVAC action as a string so we can capture statistics
 - unique_id: "7dc4569f2c4a43838d1b81c4d00f6df4"
-  trigger:
-    - trigger: time_pattern
-      hours: "*"
-      minutes: "*"
-      seconds: "17"
+  # trigger:
+  #   - trigger: time_pattern
+  #     hours: "*"
+  #     minutes: "*"
+  #     seconds: "17"
   sensor:
     - name: HVAC Current Action
       unique_id: "7dc4569f-2c4a-4383-8d1b-81c4d00f6df4"
@@ -39,11 +39,11 @@
         {{ state_attr("climate.thermostat", "hvac_action") }}
 
 - unique_id: "fc0b4ed0b02b435399264a66c6560373"
-  trigger:
-    - trigger: time_pattern
-      hours: "*"
-      minutes: "*"
-      seconds: "17"
+  # trigger:
+  #   - trigger: time_pattern
+  #     hours: "*"
+  #     minutes: "*"
+  #     seconds: "17"
   sensor:
     - name: HVAC Current Action - Binary
       unique_id: "fc0b4ed0-b02b-4353-9926-4a66c6560373"
