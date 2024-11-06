@@ -1,18 +1,18 @@
-- id: '8f6b6ef3-2e01-482c-9478-d183f7cb4a8c'
+- id: "8f6b6ef3-2e01-482c-9478-d183f7cb4a8c"
   alias: Crawlspace Freeze Warning
   description: Sends a notification when the crawlspace temperature is below 40° F
-  trigger:
-  - platform: numeric_state
-    entity_id:
-    - sensor.lumi_lumi_weather_temperature
-    below: 40.1
-    for:
-      hours: 1
-      minutes: 0
-      seconds: 0
+  triggers:
+    - trigger: numeric_state
+      entity_id:
+        - sensor.lumi_lumi_weather_temperature
+      below: 40.1
+      for:
+        hours: 1
+        minutes: 0
+        seconds: 0
   condition: []
-  action:
-    - service: notify.notify
+  actions:
+    - action: notify.notify
       data:
         title: Crawlspace is at risk of freezing
         message: The crawlspace has been below 40° F for at least one hour.  Consider turning on the heat.

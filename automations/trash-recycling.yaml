@@ -1,123 +1,121 @@
-- id: '1671740402182'
+- id: "1671740402182"
   alias: Tag Recycling Can "Churro" is scanned
   description: Sets boolean to True
-  trigger:
-  - platform: tag
-    tag_id: fdd4274c-e8f5-46eb-9f37-c8a967f68ba5
+  triggers:
+    - trigger: tag
+      tag_id: fdd4274c-e8f5-46eb-9f37-c8a967f68ba5
   condition: []
-  action:
-  - service: input_boolean.turn_on
-    data: {}
-    target:
-      entity_id: input_boolean.recycling_can_churro
+  actions:
+    - action: input_boolean.turn_on
+      data: {}
+      target:
+        entity_id: input_boolean.recycling_can_churro
   mode: single
 
-- id: '99961b2c-9545-43f3-ae29-7dc30b23cddf'
+- id: "99961b2c-9545-43f3-ae29-7dc30b23cddf"
   alias: Tag Recycling Can "Brownie" is scanned
   description: Sets boolean to True
-  trigger:
-  - platform: tag
-    tag_id: 90726f9d-3eaf-4b61-978f-0f03210999c3
+  triggers:
+    - trigger: tag
+      tag_id: 90726f9d-3eaf-4b61-978f-0f03210999c3
   condition: []
-  action:
-  - service: input_boolean.turn_on
-    data: {}
-    target:
-      entity_id: input_boolean.recycling_can_brownie
+  actions:
+    - action: input_boolean.turn_on
+      data: {}
+      target:
+        entity_id: input_boolean.recycling_can_brownie
   mode: single
 
-
-- id: '1671741672000'
+- id: "1671741672000"
   alias: Tag Trash Can is scanned
   description: Sets boolean to True
-  trigger:
-  - platform: tag
-    tag_id: ef571650-a610-4931-8dbb-95b3b21da1c5
+  triggers:
+    - trigger: tag
+      tag_id: ef571650-a610-4931-8dbb-95b3b21da1c5
   condition: []
-  action:
-  - service: input_boolean.turn_on
-    data: {}
-    target:
-      entity_id: input_boolean.trash_can
+  actions:
+    - action: input_boolean.turn_on
+      data: {}
+      target:
+        entity_id: input_boolean.trash_can
   mode: single
 
-
-- id: '1671741335261'
+- id: "1671741335261"
   alias: Return Trash and Recycling to Off
-  description: ''
-  trigger:
-  - platform: time
-    at: '20:00:00'
-  condition: 
+  description: ""
+  triggers:
+    - trigger: time
+      at: "20:00:00"
+  condition:
     - condition: time
-      after: '00:00'
-      before: '23:00'
+      after: "00:00"
+      before: "23:00"
       weekday:
         - fri
-  action:
-  - service: input_boolean.turn_off
-    data: {}
-    target:
-      entity_id: input_boolean.recycling_can_churro
-  - service: input_boolean.turn_off
-    data: {}
-    target:
-      entity_id: input_boolean.trash_can
+  actions:
+    - action: input_boolean.turn_off
+      data: {}
+      target:
+        entity_id: input_boolean.recycling_can_churro
+    - action: input_boolean.turn_off
+      data: {}
+      target:
+        entity_id: input_boolean.trash_can
   mode: single
 
-- id: '1671749036516'
+- id: "1671749036516"
   alias: Trash notification
-  description: ''
+  description: ""
   trigger:
-  - platform: time_pattern
-    hours: '*'
+    - trigger: time_pattern
+      hours: "*"
 
   condition:
-  - condition: and
-    conditions:
-    - condition: or
+    - condition: and
       conditions:
-      - condition: time
-        after: '18:00'
-        before: '21:00'
-        weekday:
-          - thu
-      - condition: time
-        after: '06:00'
-        before: '10:00'
-        weekday:
-          - fri
-    - condition: or
-      conditions:
-      - condition: and
-        conditions:    
-        - condition: numeric_state
-          entity_id: sensor.garbage_refuse_collection
-          attribute: days
-          below: 1.1
-        - condition: state
-          entity_id: input_boolean.trash_can
-          state: 'off'
-      - condition: and
-        conditions:    
-        - condition: numeric_state
-          entity_id: sensor.recycling_collection
-          attribute: days
-          below: 1.1
-        - condition: state
-          entity_id: input_boolean.recycling_can_brownie
-          state: 'off'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: person.mike
-        state: home
-      - condition: state
-        entity_id: person.tania
-        state: home
-    
-  action:
-    - service: notify.notify
+        - condition: or
+          conditions:
+            - condition: time
+              after: "18:00"
+              before: "21:00"
+              weekday:
+                - thu
+            - condition: time
+              after: "06:00"
+              before: "10:00"
+              weekday:
+                - fri
+        - condition: or
+          conditions:
+            - condition: and
+              conditions:
+                - condition: numeric_state
+                  entity_id: sensor.garbage_refuse_collection
+                  attribute: days
+                  below: 1.1
+                - condition: state
+                  entity_id: input_boolean.trash_can
+                  state: "off"
+            - condition: and
+              conditions:
+                - condition: numeric_state
+                  entity_id: sensor.recycling_collection
+                  attribute: days
+                  below: 1.1
+                - condition: state
+                  entity_id: input_boolean.recycling_can_brownie
+                  state: "off"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: person.mike
+              state: home
+            - condition: state
+              entity_id: person.tania
+              state: home
+
+  actions:
+    - action: notify.notify
       data:
         message: Trash needs to go out.
         title: Trash
@@ -126,10 +124,10 @@
       entity_id: sensor.recycling_collection
       attribute: days
       below: 1.1
-        
+
     # Will only run if condition is true
-    - service: notify.notify
+    - action: notify.notify
       data:
         message: Recycling need to go out
-        title: Recycling      
+        title: Recycling
   mode: single

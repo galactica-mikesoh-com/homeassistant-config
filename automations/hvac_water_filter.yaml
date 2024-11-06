@@ -1,7 +1,7 @@
 - id: "0f2bd0b2890c4ecd9596283db331e2e1"
   alias: HVAC Filter Replacement Tag
   description: Sets the date for HVAC Filter
-  trigger:
+  triggers:
     - trigger: tag
       tag_id: 0f2bd0b2-890c-4ecd-9596-283db331e2e1
   condition: []
@@ -16,7 +16,7 @@
 - id: "984ada78ac4c4c728b560516e3e534ec"
   alias: Refrigerator Water Filter Replacement Tag
   description: Sets the date for Refrigerator Water Filter
-  trigger:
+  triggers:
     - trigger: tag
       tag_id: 984ada78-ac4c-4c72-8b56-0516e3e534ec
   condition: []
@@ -31,7 +31,7 @@
 - id: "04fde7e3a8964411b488e56118254222"
   alias: Main Bathroom Shower Filter Replacement Tag
   description: Sets the date for Main Bathroom Shower Filter
-  trigger:
+  triggers:
     - trigger: tag
       tag_id: 04fde7e3-a896-4411-b488-e56118254222
   condition: []

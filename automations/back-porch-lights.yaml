@@ -2,15 +2,15 @@
   alias: Toggle Back Porch Lights
   description: ""
   mode: single
-  trigger:
+  triggers:
     - device_id: 40dd5dc4e4440fc1ab3fa7ff4f3dabce
       domain: zha
-      platform: device
+      trigger: device
       type: remote_button_short_press
       subtype: remote_button_short_press
   condition: []
-  action:
-    - service: light.toggle
+  actions:
+    - action: light.toggle
       data: {}
       target:
         entity_id: light.back_porch_switch_light
