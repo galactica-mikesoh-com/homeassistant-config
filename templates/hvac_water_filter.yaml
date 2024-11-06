@@ -1,35 +1,34 @@
-# Provides the age of the HVAC filter and the Refrigerator Water 
+# Provides the age of the HVAC filter and the Refrigerator Water
 # filter in days so that we can do some automations
 
 - unique_id: d60eedfb250e4d76ace885a1f10dabdc
   trigger:
-    - platform: time_pattern
+    - trigger: time_pattern
       hours: "1"
       minutes: "32"
   sensor:
     - name: HVAC Air Filter Age in Days
-      unique_id: 'd60eedfb-250e-4d76-ace8-85a1f10dabdc'
+      unique_id: "d60eedfb-250e-4d76-ace8-85a1f10dabdc"
       unit_of_measurement: "days"
       state: >
         {{ ((as_timestamp(now()) - as_timestamp(states('input_datetime.hvac_air_filter'))) / 86400) | round(0) }}
 
 - unique_id: 3848a24441de4c14bba684048e22dd32
   trigger:
-    - platform: time_pattern
+    - trigger: time_pattern
       hours: "1"
       minutes: "32"
   sensor:
     - name: Refrigerator Water Filter Age in Days
-      unique_id: '3848a244-41de-4c14-bba6-84048e22dd32'
+      unique_id: "3848a244-41de-4c14-bba6-84048e22dd32"
       unit_of_measurement: "days"
       state: >
         {{ ((as_timestamp(now()) - as_timestamp(states('input_datetime.refrigerator_water_filter'))) / 86400) | round(0) }}
 
-
 # Provides HVAC action as a string so we can capture statistics
 - unique_id: "7dc4569f2c4a43838d1b81c4d00f6df4"
   trigger:
-    - platform: time_pattern
+    - trigger: time_pattern
       hours: "*"
       minutes: "*"
       seconds: "17"
@@ -41,7 +40,7 @@
 
 - unique_id: "fc0b4ed0b02b435399264a66c6560373"
   trigger:
-    - platform: time_pattern
+    - trigger: time_pattern
       hours: "*"
       minutes: "*"
       seconds: "17"
