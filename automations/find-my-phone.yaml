@@ -2,21 +2,21 @@
   alias: Find Tania's Phone
   description: ""
   mode: single
-  trigger:
+  triggers:
     - device_id: ad652b6bc2b9ae70e151c39822fb53c7
       domain: zha
-      platform: device
+      trigger: device
       type: remote_button_short_press
       subtype: remote_button_short_press
   condition: []
-  action:
-    - service: notify.mobile_app_tania_s_phone
+  actions:
+    - action: notify.mobile_app_tania_s_phone
       data:
         message: command_volume_level
         data:
           media_stream: alarm_stream
           command: 20
-    - service: notify.mobile_app_tania_s_phone
+    - action: notify.mobile_app_tania_s_phone
       data:
         data:
           ttl: 0
@@ -28,21 +28,21 @@
   alias: Find Mike's Phone
   description: ""
   mode: single
-  trigger:
+  triggers:
     - device_id: ad652b6bc2b9ae70e151c39822fb53c7
       domain: zha
-      platform: device
+      trigger: device
       type: remote_button_double_press
       subtype: remote_button_double_press
   condition: []
-  action:
-    - service: notify.mobile_app_c1_pixel_7f4b
+  actions:
+    - action: notify.mobile_app_c1_pixel_7f4b
       data:
         message: command_volume_level
         data:
           media_stream: alarm_stream
           command: 20
-    - service: notify.mobile_app_c1_pixel_7f4b
+    - action: notify.mobile_app_c1_pixel_7f4b
       data:
         data:
           ttl: 0
