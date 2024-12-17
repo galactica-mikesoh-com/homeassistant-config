@@ -36,13 +36,13 @@
       subtype: remote_button_double_press
   condition: []
   actions:
-    - action: notify.mobile_app_c1_pixel_7f4b
+    - action: notify.mobile_app_c1pixel_7f4b_20241117
       data:
         message: command_volume_level
         data:
           media_stream: alarm_stream
           command: 20
-    - action: notify.mobile_app_c1_pixel_7f4b
+    - action: notify.mobile_app_c1pixel_7f4b_20241117
       data:
         data:
           ttl: 0

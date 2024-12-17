@@ -1,0 +1,12 @@
+- unique_id: e32a16d722744877bbb3ea8fc9dbea79
+  sensor:
+    - name: Distance between Mike and Tania in Miles
+      unique_id: e32a16d7-2274-4877-bbb3-ea8fc9dbea79-miles
+      unit_of_measurement: "miles"
+      state: >
+        {{ distance('person.mike', 'person.tania') | round(2) }}
+    - name: Distance between Mike and Tania in Feet
+      unique_id: e32a16d7-2274-4877-bbb3-ea8fc9dbea79-feet
+      unit_of_measurement: "feet"
+      state: >
+        {{ ( distance('person.mike', 'person.tania') * 5280 ) | round(0) }}

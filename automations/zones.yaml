@@ -15,7 +15,7 @@
         minutes: 30
         seconds: 0
   actions:
-    - action: notify.mobile_app_c1_pixel_7f4b
+    - action: notify.mobile_app_c1pixel_7f4b_20241117
       data:
         message: Tania is home.
   mode: single
