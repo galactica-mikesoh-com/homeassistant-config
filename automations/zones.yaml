@@ -15,7 +15,22 @@
         minutes: 30
         seconds: 0
   actions:
-    - action: notify.mobile_app_c1pixel_7f4b_20241117
+    - action: notify.notify_mike
+      data:
+        message: command_ringer_mode
+        data:
+          command: normal
+    - action: notify.notify_mike
+      data:
+        message: command_volume_level
+        data:
+          media_stream: notification_stream
+          command: 100
+    - action: notify.notify_mike
       data:
         message: Tania is home.
+        data:
+          ttl: 0
+          priority: high
+          channel: notification_stream
   mode: single

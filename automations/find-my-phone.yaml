@@ -46,7 +46,7 @@
         message: command_volume_level
         data:
           media_stream: alarm_stream
-          command: 20
+          command: 100
     - action: notify.notify_mike
       data:
         message: Home Assistant is finding your phone
