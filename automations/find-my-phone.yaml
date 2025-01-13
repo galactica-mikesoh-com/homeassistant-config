@@ -16,13 +16,13 @@
         data:
           media_stream: alarm_stream
           command: 20
-    - action: notify.mobile_app_tania_s_phone
+    - action: notify.notify_tania
       data:
+        message: Home Assistant is finding your phone
         data:
           ttl: 0
           priority: high
           channel: alarm_stream
-        message: Home Assistant is finding your phone
 
 - id: f1127b36-af59-42d2-8296-b7be3d8eeb11
   alias: Find Mike's Phone
@@ -36,16 +36,21 @@
       subtype: remote_button_double_press
   condition: []
   actions:
-    - action: notify.mobile_app_c1pixel_7f4b_20241117
+    - action: notify.notify_mike
+      data:
+        message: command_ringer_mode
+        data:
+          command: normal
+    - action: notify.notify_mike
       data:
         message: command_volume_level
         data:
           media_stream: alarm_stream
           command: 20
-    - action: notify.mobile_app_c1pixel_7f4b_20241117
+    - action: notify.notify_mike
       data:
+        message: Home Assistant is finding your phone
         data:
           ttl: 0
           priority: high
           channel: alarm_stream
-        message: Home Assistant is finding your phone

@@ -1,0 +1,19 @@
+- platform: group
+  name: "Notify Mike"
+  unique_id: "notify_mike"
+  services:
+    - action: mobile_app_pixel9proxl_cdae_20250109
+    - action: mobile_app_c1pixel_7f4b_20241117
+
+- platform: group
+  name: "Notify Tania"
+  unique_id: "notify_tania"
+  services:
+    - action: mobile_app_tania_s_phone
+
+- platform: group
+  name: "Notify All Humans"
+  unique_id: "notify_humans"
+  services:
+    - action: notify_mike
+    - action: notify_tania
