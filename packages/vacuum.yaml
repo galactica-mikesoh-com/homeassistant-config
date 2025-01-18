@@ -1,0 +1,15 @@
+automation:
+  - id: "de3c52cccd8d4e8d8798f438a1d71ad1"
+    alias: Vacuum filter tag is scanned
+    description: Sets boolean to True
+    triggers:
+      - trigger: tag
+        tag_id: 4a64b579-1205-4533-a439-e1a5403f2931
+    condition: []
+    actions:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.vacuum_filter
+        data:
+          date: "{{ now().strftime('%Y-%m-%d') }}"
+    mode: single
