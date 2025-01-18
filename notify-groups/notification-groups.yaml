@@ -3,7 +3,6 @@
   unique_id: "notify_mike"
   services:
     - action: mobile_app_pixel9proxl_cdae_20250109
-    - action: mobile_app_c1pixel_7f4b_20241117
 
 - platform: group
   name: "Notify Tania"
