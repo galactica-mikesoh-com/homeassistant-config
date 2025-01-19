@@ -1,0 +1,33 @@
+automation:
+  - id: "984ada78ac4c4c728b560516e3e534ec"
+    alias: Refrigerator Water Filter Replacement Tag
+    description: Sets the date for Refrigerator Water Filter
+    triggers:
+      - trigger: tag
+        tag_id: 984ada78-ac4c-4c72-8b56-0516e3e534ec
+    condition: []
+    actions:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.refrigerator_water_filter
+        data:
+          date: "{{ now().strftime('%Y-%m-%d') }}"
+    mode: single
+
+# Provides the age of the Refrigerator Water filter in days
+# so that we can do some automations
+template:
+  - unique_id: 3848a24441de4c14bba684048e22dd32
+    trigger:
+      - trigger: time_pattern
+        hours: "1"
+        minutes: "32"
+      - trigger: state
+        entity_id:
+          - "input_datetime.refrigerator_water_filter"
+    sensor:
+      - name: Refrigerator Water Filter Age in Days
+        unique_id: "3848a244-41de-4c14-bba6-84048e22dd32"
+        unit_of_measurement: "days"
+        state: >
+          {{ ((as_timestamp(now()) - as_timestamp(states('input_datetime.refrigerator_water_filter'))) / 86400) | round(0) }}

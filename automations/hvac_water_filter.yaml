@@ -1,18 +1,3 @@
-- id: "984ada78ac4c4c728b560516e3e534ec"
-  alias: Refrigerator Water Filter Replacement Tag
-  description: Sets the date for Refrigerator Water Filter
-  triggers:
-    - trigger: tag
-      tag_id: 984ada78-ac4c-4c72-8b56-0516e3e534ec
-  condition: []
-  actions:
-    - action: input_datetime.set_datetime
-      target:
-        entity_id: input_datetime.refrigerator_water_filter
-      data:
-        date: "{{ now().strftime('%Y-%m-%d') }}"
-  mode: single
-
 - id: "04fde7e3a8964411b488e56118254222"
   alias: Main Bathroom Shower Filter Replacement Tag
   description: Sets the date for Main Bathroom Shower Filter
