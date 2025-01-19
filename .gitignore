@@ -19,3 +19,6 @@ custom_components/
 .HA_VERSION
 .Trash-*
 automations/test-nfc-tag.yaml
+
+# These files are for voice control and aren't version controlled...yet
+tts/

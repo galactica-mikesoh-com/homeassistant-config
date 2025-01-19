@@ -1,0 +1,77 @@
+automation:
+  - id: "0f2bd0b2890c4ecd9596283db331e2e1"
+    alias: HVAC Filter Replacement Tag
+    description: Sets the date for HVAC Filter
+    triggers:
+      - trigger: tag
+        tag_id: 0f2bd0b2-890c-4ecd-9596-283db331e2e1
+    condition: []
+    actions:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.hvac_air_filter
+        data:
+          date: "{{ now().strftime('%Y-%m-%d') }}"
+    mode: single
+
+# Provides the age of the HVAC filter filter in days
+# so that we can do some automations
+template:
+  - unique_id: d60eedfb250e4d76ace885a1f10dabdc
+    trigger:
+      - trigger: time_pattern
+        hours: "1"
+        minutes: "32"
+      - trigger: state
+        entity_id:
+          - "input_datetime.hvac_air_filter"
+    sensor:
+      - name: HVAC Air Filter Age in Days
+        unique_id: "d60eedfb-250e-4d76-ace8-85a1f10dabdc"
+        unit_of_measurement: "days"
+        state: >
+          {{ ((as_timestamp(now()) - as_timestamp(states('input_datetime.hvac_air_filter'))) / 86400) | round(0) }}
+
+  # Provides HVAC action as a string so we can capture statistics
+  - unique_id: "7dc4569f2c4a43838d1b81c4d00f6df4"
+    sensor:
+      - name: HVAC Current Action
+        unique_id: "7dc4569f-2c4a-4383-8d1b-81c4d00f6df4"
+        state: >
+          {{ state_attr("climate.thermostat", "hvac_action") }}
+
+  - unique_id: "fc0b4ed0b02b435399264a66c6560373"
+    sensor:
+      - name: HVAC Current Action - Binary
+        unique_id: "fc0b4ed0-b02b-4353-9926-4a66c6560373"
+        state_class: measurement
+        state: >
+          {% if state_attr("climate.thermostat", "hvac_action") in ["cooling", "heating"] -%}
+            1
+          {%- else -%}
+            0
+          {%- endif %}
+
+sensor:
+  - unique_id: d284b83f-1d1e-4ccd-967f-b3dfb79caeed
+    platform: history_stats
+    name: HVAC Use Yesterday
+    entity_id: sensor.hvac_current_action
+    state: 
+      - heating
+      - cooling
+    type: time
+    end: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0 ) }}"
+    duration:
+      hours: 24
+
+  - unique_id: 94075342-ab61-47c6-801d-bf38cf1cf08a
+    platform: history_stats
+    name: HVAC Use Today
+    entity_id: sensor.hvac_current_action
+    state: 
+      - heating
+      - cooling
+    type: time
+    start: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0 ) }}"
+    end: "{{ now() }}"
