@@ -17,7 +17,8 @@ template:
 
 automation:
   - id: "6638d5e86ed5407aa50121a623b2f588"
-    description: ""
+    alias: "Renew Let's Encrypt Certificate"
+    description: "Renews the SSL certificate when the cert validity reaches 30 days"
     mode: single
     triggers:
       - trigger: numeric_state
