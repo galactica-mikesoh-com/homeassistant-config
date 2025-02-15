@@ -1,0 +1,48 @@
+template:
+  # Provides age of certificate in dates as well as days valid
+  - unique_id: be687a4718624b15a7b78490375335f4
+    trigger:
+      - trigger: time_pattern
+        hours: "1"
+        minutes: "32"
+      - trigger: state
+        entity_id:
+          - "sensor.cert_expiry_timestamp_homeassistant_galactica_mikesoh_com_8123"
+    sensor:
+      - name: Home Assistant Certificate Validity in Days
+        unique_id: be687a47-1862-4b15-a7b7-8490375335f4
+        unit_of_measurement: "days"
+        state: >
+          {{ (( as_timestamp(states('sensor.cert_expiry_timestamp_homeassistant_galactica_mikesoh_com_8123')) - as_timestamp(now()) ) / 86400) | round(0) }}
+
+automation:
+  - id: "6638d5e86ed5407aa50121a623b2f588"
+    description: ""
+    mode: single
+    triggers:
+      - trigger: numeric_state
+        entity_id:
+          - sensor.home_assistant_certificate_validity_in_days
+        below: 30
+    conditions: []
+    actions:
+      - action: hassio.addon_restart
+        metadata: {}
+        data:
+          addon: core_letsencrypt
+      - wait_template: >-
+          {{ int(states('sensor.home_assistant_certificate_validity_in_days')) > 30 }}
+        continue_on_timeout: false
+        timeout: "60"
+      - action: notify.notify_mike
+        data:
+          message: "Home Assistant SSL Certificate has Renewed.  Restarting..."
+          data:
+            ttl: 0
+            priority: high
+            channel: alarm_stream
+      - delay:
+          seconds: 30
+      - action: homeassistant.restart
+        metadata: {}
+        data: {}
