@@ -1,1 +1,19 @@
-[]
+- id: "81244453f4c744efb2d22f5fefbf932c"
+  alias: Notify Mike Webhook
+  description: ""
+  triggers:
+    - trigger: webhook
+      allowed_methods:
+        - POST
+        - PUT
+      local_only: false
+      webhook_id: !secret 81244453f4c744efb2d22f5fefbf932c_webhook
+  conditions: []
+  actions:
+    - action: notify.notify_mike
+      data:
+        message: >
+          {{ trigger.data.message }}
+        title: >
+          {{ trigger.data.title }}
+  mode: single
