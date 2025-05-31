@@ -27,7 +27,7 @@ automation:
         below: 30
     conditions: []
     actions:
-      - action: hassio.addon_restart
+      - action: hassio.addon_start
         metadata: {}
         data:
           addon: core_letsencrypt

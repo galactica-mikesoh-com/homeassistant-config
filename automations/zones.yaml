@@ -34,3 +34,40 @@
           priority: high
           channel: notification_stream
   mode: single
+
+- id: da3ea5ad1be7408e987c1b7a2ecbdd14
+  alias: Near
+  description: ""
+  triggers:
+    trigger: numeric_state
+    entity_id:
+      - sensor.distance_between_mike_and_tania_in_feet
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    below: 500
+  condition:
+    - condition: state
+      entity_id: input_boolean.alert_mike
+      state: "on"
+  actions:
+    - action: notify.notify_mike
+      data:
+        message: command_ringer_mode
+        data:
+          command: normal
+    - action: notify.notify_mike
+      data:
+        message: command_volume_level
+        data:
+          media_stream: notification_stream
+          command: 100
+    - action: notify.notify_mike
+      data:
+        message: Tania is near.
+        data:
+          ttl: 0
+          priority: high
+          channel: notification_stream
+  mode: single
