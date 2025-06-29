@@ -1,0 +1,72 @@
+- id: "b2db29d0-214e-4617-9134-380f43466095"
+  alias: Hourly Weather Forecast
+  description: ""
+  mode: single
+  triggers:
+    - trigger: time_pattern
+      hours: "/1"
+  conditions: []
+  actions:
+    - action: weather.get_forecasts
+      metadata: {}
+      data:
+        type: hourly
+      response_variable: hourly_weather_forecast
+
+- id: "d31d862238554c9e8d1e753344b90d20"
+  alias: "Start Drip Irrigation Timer"
+  description: ""
+  mode: single
+  triggers:
+    - trigger: state
+      entity_id:
+        - switch.drip_faucet_valve
+      to: "on"
+      from: "off"
+  conditions: []
+  actions:
+    - action: timer.start
+      metadata: {}
+      data: {}
+      target:
+        entity_id: timer.drip_water_on_duration
+
+- id: "06cffbf6-9992-448a-9b71-4438bc9debcf"
+  alias: "Pause Drip Irrigation Timer"
+  description: ""
+  mode: single
+  triggers:
+    - trigger: state
+      entity_id:
+        - switch.drip_faucet_valve
+      to: "off"
+      from: "on"
+  conditions: []
+  actions:
+    - action: timer.pause
+      metadata: {}
+      data: {}
+      target:
+        entity_id: timer.drip_water_on_duration
+
+- id: "b94763b0-bfdc-4ca0-95a1-baf6090ba148"
+  alias: "Turn Off Drip Irrigation after timer or when raining"
+  description: ""
+  mode: single
+  triggers:
+    - trigger: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.drip_water_on_duration
+    - trigger: numeric_state
+      entity_id:
+        - sensor.forecast_home_next_hour
+      attribute: forecast.precipitation
+      above: 1
+  conditions: []
+  actions:
+    - action: switch.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: switch.drip_faucet_valve

@@ -1,0 +1,20 @@
+- unique_id: "53d16054-d24a-4106-b22b-7b50a49edaef"
+  trigger:
+    - trigger: time_pattern
+      hours: "/1"
+    - trigger: tag
+      tag_id: de196629-0dac-45e0-8863-57e91fa0df5f
+  action:
+    - action: weather.get_forecasts
+      data:
+        type: hourly
+      target:
+        entity_id: weather.forecast_home
+      response_variable: hourly_forecast
+  sensor:
+    - name: Forecast Home Next Hour
+      unique_id: d65c8656-aabf-45ab-ad7f-2e8e7b10fff4
+      state: "{{ hourly_forecast['weather.forecast_home'].forecast[0].temperature }}"
+      unit_of_measurement: °F
+      attributes:
+        forecast: "{{ hourly_forecast['weather.forecast_home'].forecast[0] }}"
