@@ -14,6 +14,9 @@
         hours: 0
         minutes: 30
         seconds: 0
+    - condition: state
+      entity_id: input_boolean.alert_mike
+      state: "on"
   actions:
     - action: notify.notify_mike
       data:
@@ -28,10 +31,75 @@
           command: 100
     - action: notify.notify_mike
       data:
-        message: Tania is home.
+        message: Tania is home.  Turning alerts off.
         data:
           ttl: 0
           priority: high
+          channel: notification_stream
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.alert_mike
+  mode: single
+
+- id: c4b0b435-1f14-41ac-9e42-c5744802041f
+  alias: "Five-Minutes Out"
+  description: "Tania is 5 minutes away"
+  triggers:
+    - trigger: state
+      entity_id:
+        - person.tania
+      from: not_home
+      to: "Five Minute Radius"
+  condition:
+    - condition: state
+      entity_id: person.mike
+      state: home
+      for:
+        hours: 0
+        minutes: 30
+        seconds: 0
+    - condition: state
+      entity_id: input_boolean.alert_mike
+      state: "on"
+  actions:
+    - action: notify.notify_mike
+      data:
+        message: Tania is 5 Minutes Out.
+        data:
+          ttl: 0
+          priority: normal
+          channel: notification_stream
+  mode: single
+
+- id: 86517352-b628-4223-87b4-6a8e53e75ce9
+  alias: "Tania is AWAY"
+  description: ""
+  triggers:
+    - trigger: state
+      entity_id:
+        - person.tania
+      to: not_home
+  condition:
+    - condition: state
+      entity_id: person.mike
+      state: home
+      for:
+        hours: 0
+        minutes: 30
+        seconds: 0
+    - condition: state
+      entity_id: input_boolean.alert_mike
+      state: "on"
+  actions:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.alert_mike
+    - action: notify.notify_mike
+      data:
+        message: Tania is now away.  Alerts turned on.
+        data:
+          ttl: 0
+          priority: normal
           channel: notification_stream
   mode: single
 
