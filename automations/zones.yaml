@@ -78,7 +78,7 @@
     - trigger: state
       entity_id:
         - person.tania
-      to: not_home
+      to: away
   condition:
     - condition: state
       entity_id: person.mike
@@ -87,9 +87,6 @@
         hours: 0
         minutes: 30
         seconds: 0
-    - condition: state
-      entity_id: input_boolean.alert_mike
-      state: "on"
   actions:
     - action: input_boolean.turn_on
       target:
@@ -104,7 +101,7 @@
   mode: single
 
 - id: da3ea5ad1be7408e987c1b7a2ecbdd14
-  alias: Near
+  alias: "Tania is Near"
   description: ""
   triggers:
     trigger: numeric_state
