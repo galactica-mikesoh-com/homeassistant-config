@@ -10,12 +10,17 @@
       subtype: remote_button_short_press
   condition: []
   actions:
-    - action: notify.mobile_app_tania_s_phone
+    - action: notify.notify_tania
+      data:
+        message: command_ringer_mode
+        data:
+          command: normal
+    - action: notify.notify_tania
       data:
         message: command_volume_level
         data:
           media_stream: alarm_stream
-          command: 20
+          command: 100
     - action: notify.notify_tania
       data:
         message: Home Assistant is finding your phone

@@ -2,13 +2,13 @@
   name: "Notify Mike"
   unique_id: "notify_mike"
   services:
-    - action: mobile_app_pixel9proxl_cdae_20250109
+    - action: mobile_app_mikepixel10pro
 
 - platform: group
   name: "Notify Tania"
   unique_id: "notify_tania"
   services:
-    - action: mobile_app_tania_s_phone
+    - action: mobile_app_taniapixel10pro
 
 - platform: group
   name: "Notify All Humans"

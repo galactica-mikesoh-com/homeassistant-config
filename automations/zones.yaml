@@ -94,10 +94,6 @@
     - action: notify.notify_mike
       data:
         message: Tania is now away.  Alerts turned on.
-        data:
-          ttl: 0
-          priority: normal
-          channel: notification_stream
   mode: single
 
 - id: da3ea5ad1be7408e987c1b7a2ecbdd14
